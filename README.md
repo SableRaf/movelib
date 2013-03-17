@@ -2,7 +2,7 @@
 
 An interface for the [PS Move Controller](http://en.wikipedia.org/wiki/PlayStation_Move) for [Processing](http://processing.org/) based on the [PS Move API](http://thp.io/2010/psmove/) by Thomas Perl <[m@thp.io](mailto:m@thp.io)>.
 
-###This library is still in development and not ready for use yet. Please wait until this note is removed to download.
+###Important note: This library is still under development and not ready for use yet. Please wait until this note is removed to download.
 In the meantime, you can start using the development pde version available [here](https://github.com/SableRaf/MoveP5).
 
 ## About
