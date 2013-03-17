@@ -7,11 +7,11 @@ In the meantime, you can start using the development pde version available [here
 
 ## About
 
-“The PS Move API is an open source library for Linux, Mac OS X and Windows to access the Sony Move Motion Controller via Bluetooth and USB directly from your PC without the need for a PS3. Tracking in 3D space is possible using a PS Eye (on Linux and Windows), an iSight camera (on Mac OS X) or any other suitable camera source.” (quoted from the [PS Move API](http://thp.io/2010/psmove/) main page)
-
-This library provides a convenient wrapper for the PS Move API, giving access to the Move Controller's orientation sensors, buttons, actuators (RGB led sphere, vibration motor), and camera based 3D tracking.
+This library provides a convenient wrapper for the [PS Move API](http://thp.io/2010/psmove/), giving access to the Move Controller's orientation sensors, buttons, actuators (RGB led sphere, vibration motor), and camera based 3D tracking.
 
 It also adds support for sending and receiving the data from the controllers via OSC.
+
+“The PS Move API is an open source library for Linux, Mac OS X and Windows to access the Sony Move Motion Controller via Bluetooth and USB directly from your PC without the need for a PS3. Tracking in 3D space is possible using a PS Eye (on Linux and Windows), an iSight camera (on Mac OS X) or any other suitable camera source.” (quoted from the [PS Move API](http://thp.io/2010/psmove/) main page)
 
 ## Download
 
