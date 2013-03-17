@@ -25,9 +25,7 @@ Pairing of the PS Move Controllers with your Mac is done via the [pairing utilit
 
 Refer to the comments in the examples for indications on how to get started.
 
-## About camera Tracking
-
-The iSight/Facetime camera support is still very much a hack and only supports up to two simultaneous controllers.
+*Note: The iSight/Facetime camera support is still very much a hack and only supports up to two simultaneous controllers.*
 
 ## Snapshot
 
