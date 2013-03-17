@@ -1,8 +1,9 @@
 # MoveLib
+*This library is still in development and not ready for use yet. Please wait until this note is removed to download.* 
+In the meantime, you can start using the development pde version available [here](https://github.com/SableRaf/MoveP5).
+
 
 An interface for the [PS Move Controller](http://en.wikipedia.org/wiki/PlayStation_Move) for [Processing](http://processing.org/) based on the [PS Move API](http://thp.io/2010/psmove/) by Thomas Perl.
-
-*This library is still in development and not ready for use yet. Please wait until this note is removed to download.* In the meantime, you can start using the development pde version available [here](https://github.com/SableRaf/MoveP5).
 
 ## About
 
@@ -55,4 +56,4 @@ oscP5 (to transmit the data over a network or locally to another program)
 
 The library is Open Source Software released under the [GNU General Public License](https://raw.github.com/SableRaf/movelib/master/LICENSE.txt). It's developed by [Raphaël de Courville](https://vimeo.com/sableraf/).
 
-The PS Move API is released under the [Simplified BSD-style license](https://raw.github.com/thp/psmoveapi/master/COPYING). It's developed by [Thomas Perl](m@thp.io).
+The PS Move API is released under the [Simplified BSD-style license](https://raw.github.com/thp/psmoveapi/master/COPYING). It's developed by Thomas Perl <[m@thp.io](mailto:m@thp.io)>.
