@@ -7,11 +7,9 @@ In the meantime, you can start using the development pde version available [here
 
 ## About
 
-This library provides a convenient wrapper for the [PS Move API](http://thp.io/2010/psmove/), giving access to the Move Controller's orientation sensors, buttons, actuators (RGB led sphere, vibration motor), and camera based 3D tracking.
+This library provides a convenient wrapper for the [PS Move API](http://thp.io/2010/psmove/), giving access to the Move Controller's orientation sensors, buttons, actuators (RGB led sphere, vibration motor) and more, as well as camera based 3D tracking. Up to 7 controllers can be connected on a single machine.
 
-It also adds support for sending and receiving the data from the controllers via OSC.
-
-“The PS Move API is an open source library for Linux, Mac OS X and Windows to access the Sony Move Motion Controller via Bluetooth and USB directly from your PC without the need for a PS3. Tracking in 3D space is possible using a PS Eye (on Linux and Windows), an iSight camera (on Mac OS X) or any other suitable camera source.” (quoted from the [PS Move API](http://thp.io/2010/psmove/) main page)
+The lib also adds support for sending and receiving the data from the controllers via OSC.
 
 ## Download
 
@@ -26,6 +24,10 @@ Unzip and put the extracted *MoveLib* folder into the libraries folder of your P
 Pairing of the PS Move Controllers with your Mac is done via the [pairing utility](https://raw.github.com/SableRaf/movelib/master/tools/Pairing.zip). 
 
 Refer to the comments in the examples for indications on how to get started.
+
+## About camera Tracking
+
+The iSight/Facetime camera support is still very much a hack and only supports up to two simultaneous controllers.
 
 ## Snapshot
 
