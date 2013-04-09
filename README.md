@@ -32,7 +32,7 @@ Refer to the comments in the examples for indications on how to get started.
 
 ## Examples
 
-* [Hello](https://raw.github.com/SableRaf/movelib/master/examples/Hello/Hello.pde)
+* [Hello](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/Hello/Hello.pde)
 
 ## Tested
 
