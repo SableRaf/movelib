@@ -12,7 +12,7 @@ The lib will eventually adds support for sending and receiving the data from the
 
 ## Download
 
-* [MoveLib.zip v0.1](https://raw.github.com/SableRaf/movelib/master/download/MoveLib.zip)
+* [MoveLib.zip v0.1 (beta)](https://raw.github.com/SableRaf/movelib/master/download/MoveLib.zip)
 
 ## Installation
 
@@ -32,9 +32,7 @@ Refer to the comments in the examples for indications on how to get started.
 
 ## Examples
 
-* [Button Events](https://raw.github.com/SableRaf/movelib/master/examples/button_events/button_events.pde)
-* [Camera Tracking](https://raw.github.com/SableRaf/movelib/master/examples/camera_tracking/camera_tracking.pde)
-* [OSC streaming](https://raw.github.com/SableRaf/movelib/master/examples/osc_streaming/osc_streaming.pde)
+* [Hello](https://raw.github.com/SableRaf/movelib/master/examples/Hello/Hello.pde)
 
 ## Tested
 
