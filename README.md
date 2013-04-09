@@ -20,7 +20,7 @@ Unzip and put the extracted *MoveLib* folder into the libraries folder of your P
 
 ## Usage
 
-Pairing of the PS Move Controllers with your Mac is done via the [pairing utility](https://raw.github.com/SableRaf/movelib/master/tools/Pairing.zip). 
+Pairing of the PS Move Controllers with your Mac is done via the [pairing utility](https://raw.github.com/SableRaf/movelib/master/tools/Pairing.zip) (Douglas Wilson). 
 
 Refer to the comments in the examples for indications on how to get started.
 
