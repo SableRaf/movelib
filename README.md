@@ -2,14 +2,13 @@
 
 A [Processing](http://processing.org/) interface for the [PS Move Controller](http://en.wikipedia.org/wiki/PlayStation_Move) based on the [PS Move API](http://thp.io/2010/psmove/).
 
-###Important note: This library is still under development and not ready for use yet. Please wait until this note is removed to download.
-In the meantime, you can start using the development pde version available [here](https://github.com/SableRaf/MoveP5).
+###Important note: This library is still under development and very much BETA. Use at your own risks.
 
 ## About
 
 This library provides a convenient wrapper for the [PS Move API](http://thp.io/2010/psmove/), giving access to the Move Controller's orientation sensors, buttons, actuators (RGB led sphere, vibration motor) and more, as well as camera based 3D tracking. Up to 7 controllers can be connected on a single machine.
 
-The lib also adds support for sending and receiving the data from the controllers via OSC.
+The lib will eventually adds support for sending and receiving the data from the controllers via OSC. An earlier pde version supporting osc can be found [here](https://github.com/SableRaf/MoveP5).
 
 ## Download
 
