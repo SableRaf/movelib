@@ -25,29 +25,31 @@
  * @version     ##library.prettyVersion## (##library.version##)
  */
 
-package MoveLib.library;
+package movelib.library;
+
+import java.lang.reflect.Method;
+
+//import movelib.MoveManager;
+//import movelib.MoveConstants;
 
 import processing.core.*;
 
 // import io.thp.psmove.*;
 
-// import MoveLib.library.MoveController;
-import MoveLib.library.MoveManager;
 
 /**
- * Call MoveLib to . 
+ * Call MoveLib to initialize PS Move Controller support. 
  * 
  * @example Hello
  * 
- * (the tag @example followed by the name of an example included in folder 'examples' will
- * automatically include the example in the javadoc.)
- *
  */
 
-public class MoveLib  implements MoveConstants {
+public class MoveLib  implements MoveConstants, PConstants {
 	
-	// myParent is a reference to the parent sketch
-	PApplet myParent;
+	// parent is a reference to the parent sketch
+	PApplet parent;
+	
+	Method moveButtonEvent;
 
 	int myVariable = 0;
 	
@@ -57,13 +59,43 @@ public class MoveLib  implements MoveConstants {
 	/**
 	 * Constructor for the MoveLib object
 	 * 
-	 * @example Hello
-	 * @param theParent
+	 * @param theParent Current PApplet. In most cases, you will write movelib ml = new movelib(this);
 	 */
 	public MoveLib(PApplet theParent) {
-		myParent = theParent;
+		parent = theParent;
 		welcome();
+		
+	    // Check to see if the host applet implements public void moveButtonEvent(MoveLib m)
+	    try {
+	      moveButtonEvent =
+	      parent.getClass().getMethod("moveButtonEvent",
+	                                    new Class[] { MoveLib.class });
+	    } catch (Exception e) {
+	      // no such method, or an error.. which is fine, just ignore
+	    }
 	}
+	
+	/** 
+	 * Method that's called just after beginDraw(), meaning that it can affect drawing.
+	 */
+	public void pre() {
+	}
+	
+	/** 
+	 * Fire the moveButtonEvent() method
+	 */
+	public void makeEvent() {
+		if (moveButtonEvent != null) {
+		  try {
+		  	moveButtonEvent.invoke(parent, new Object[] { this });
+		  } catch (Exception e) {
+		    System.err.println("Disabling moveButtonEvent() for because of an error.");
+		    e.printStackTrace();
+		    moveButtonEvent = null;
+		  }
+		}
+	}
+	
 	
 	/**
 	 * 
@@ -72,6 +104,7 @@ public class MoveLib  implements MoveConstants {
 	public MoveManager createManager() {
 		return new MoveManager();
 	}
+	
 	
 	/**
 	 * 
@@ -84,9 +117,13 @@ public class MoveLib  implements MoveConstants {
 	}
 	
 	
+	/**
+	 * Print out the presentation of the library.
+	 */
 	private void welcome() {
 		System.out.println("##library.name## ##library.prettyVersion## by ##author##");
 	}
+	
 	
 	/**
 	 * return the version of the library.
