@@ -7,6 +7,7 @@ import java.util.Set;
 import io.thp.psmove.*;
 
 import processing.core.PVector;
+import processing.core.PImage;
 
 //import movelib.MoveConstants;
 
@@ -356,6 +357,7 @@ public class MoveManager implements MoveConstants {
 			  move.set_leds(255, 255, 255);
 		      move.update_leds();
 			  moveTracker = new MoveTracker(move);
+			  moveTracker.debug(debug);
 		  }
 	  }
 	  
@@ -367,7 +369,9 @@ public class MoveManager implements MoveConstants {
 		  if(moveTracker==null) {
 			  MoveController move = getController(id);
 			  moveTracker = new MoveTracker(move);
-			  
+		  }
+		  else {
+			  System.out.println("Cannot use startTracking() as tracking has already started.");
 		  }
 	  }
 	  
@@ -380,6 +384,28 @@ public class MoveManager implements MoveConstants {
 			  System.out.println("You cannot run getPosition() before moveTracker has been initalized");
 		  }
 	      return pos;
+	  }
+	  
+	  /** Use this function to test whether tracking was initiated
+	   * 
+	   * @return true or false
+	   */
+	  public boolean isTracking() {
+		  return (moveTracker==null) ? false : true;
+	  }
+	  
+	  /** Get the image from the tracker.
+	   * 
+	   * @return a PImage
+	   */
+	  public PImage getImage() {
+		  if(moveTracker!=null) {
+			  return (PImage) moveTracker.getImage();
+		  }
+		  else {
+			  System.out.println("You cannot run getPosition() before moveTracker has been initalized");
+		  }
+	      return null;
 	  }
 
 	}

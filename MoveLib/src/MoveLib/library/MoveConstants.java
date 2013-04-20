@@ -29,14 +29,14 @@ public interface MoveConstants {
 	
 	// Battery levels
 	
-	static public final int Batt_MIN           = 0x00;
-	static public final int Batt_20Percent     = 0x01;
-	static public final int Batt_40Percent     = 0x02;
-	static public final int Batt_60Percent     = 0x03;
-	static public final int Batt_80Percent     = 0x04;
-	static public final int Batt_MAX           = 0x05;
-	static public final int Batt_CHARGING      = 0xEE;
-	static public final int Batt_CHARGING_DONE = 0xEF;
+	static public final int Batt_MIN           = 0;
+	static public final int Batt_20Percent     = 1;
+	static public final int Batt_40Percent     = 2;
+	static public final int Batt_60Percent     = 3;
+	static public final int Batt_80Percent     = 4;
+	static public final int Batt_MAX           = 5;
+	static public final int Batt_CHARGING      = 6;
+	static public final int Batt_CHARGING_DONE = 7;
 	
 	
 	// Execution modes

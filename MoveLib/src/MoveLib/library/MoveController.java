@@ -26,7 +26,7 @@ public class MoveController extends PSMove implements MoveConstants {
 	  // Actuators
 	  
 	  private int rumbleLevel;                // Vibration of the controller (between 0 and 255)
-	  private int sphereColor;               // The color values we send to the LEDs
+	  private int sphereColor;                // The color values we send to the LEDs
 
 	  
 	  // Orientation calculated by sensor fusion (quaternion)
@@ -53,8 +53,7 @@ public class MoveController extends PSMove implements MoveConstants {
 
 	  
 	  private long [] pressed = {0};                         // Button press events
-	  private long [] released = {0};                        // Button release events
-
+	  private long [] released = {0};                        // Button release events 
 	  
 	  /** 
 	   * Create a Move Controller object.
@@ -77,7 +76,6 @@ public class MoveController extends PSMove implements MoveConstants {
 	    createButtons();
 	    updatePoll();
 	  }
-
 	  
 	  /** 
 	  * Get new information from the buttons and update 
@@ -144,6 +142,24 @@ public class MoveController extends PSMove implements MoveConstants {
 	   */
 	  public void debug(boolean b) {
 	    debug = b;
+	  }
+
+	  
+	  /**
+	   * Print the current battery level, mac adress and connection type of each controller
+	   *  
+	   * @return True if everything went fine, False in case of error
+	   */
+	  public boolean printController() {
+	    if (null==battery_name || null==serial) {
+	      if (debug && null==serial) System.out.println("Error in MoveController.printController(): serial variable not yet instanciated.");
+	      if (debug && null==battery_name) System.out.println("Error in MoveController.printController(): battery_name variable not yet instanciated.");
+	      return false;
+	    }
+	    else {
+	      System.out.println("PS Move with MAC address: "+serial+ " | Battery "+battery_name+" | Connected via "+connection_name);
+	    }
+	    return true;
 	  }
 
 	  
@@ -283,7 +299,7 @@ public class MoveController extends PSMove implements MoveConstants {
 	   * Get the controller's connection type
 	   * @return The connection type in plain text
 	   */
-	  public String get_connection_name() {
+	  String get_connection_name() {
 	    return connection_name;
 	  }
 
@@ -291,12 +307,69 @@ public class MoveController extends PSMove implements MoveConstants {
 	   * Get the controller's battery status
 	   * @return The charge level in plain text
 	   */
-	  public String get_battery_name() {
+	  String get_battery_name() {
 	    //System.out.println("get_battery_name() "+battery_name);
 	    return battery_name;
 	  }
+	  
+	  
+	  /** Get the orientation of the controller as Euler angles (maybe left to the user)
+	   * 
+	   * @return a PVector
+	   */
+	  public PVector getOrientation() {
+	   PVector orientation = new PVector(0,0,0);
+	   
+	   // convert from quaternion (toxiclib ?)
+	   
+	   return orientation;
+	  }
 
+	  
+	  public float[] getQuaternions() {
+		  float[] quat = new float[]{ get_quat0() , get_quat1(), get_quat2(), get_quat3() };
+		  return quat;
+	  }
+	  
+	  public PVector getAccelerometers() {
+		  PVector acc = new PVector( get_ax(), get_ay(), get_az() );
+		  return acc;
+	  }
+	  
+	  public PVector getGyroscopes() {
+		  PVector gyr = new PVector( get_gx(), get_gy(), get_gz() );
+		  return gyr;
+	  }
 
+	  public PVector getMagnetometers() {
+		  PVector mag = new PVector( get_mx(), get_my(), get_mz() );
+		  return mag;
+	  }
+	  
+	 /** Get how the controller is connected to the computer
+	  * 
+	  * Bluetooth = 0;
+	  * USB       = 1;
+	  * error     = 2;
+	  * 
+	  * @return the connection type as an int
+	  */
+	  public int getConnection() {
+		  return connection_type;
+	  }
+	  
+	 /** Get how the controller is connected to the computer (in plain text)
+	  * 
+	  * "Bluetooth"
+	  * "USB"
+	  * "Connection error"
+	  * 
+	  * @return the connection type as an String
+	  */
+	  public String getConnectionName() {
+		  return connection_name;
+	  }
+	  
 	  /**
 	   * Get the orientation's first component (quaternion value from sensor fusion)
 	   * 
@@ -304,7 +377,7 @@ public class MoveController extends PSMove implements MoveConstants {
 	   * 
 	   * @return a float array containing one value
 	   */
-	  public float get_quat0() {
+	  float get_quat0() {
 	    return quat0[0];
 	  }
 
@@ -315,7 +388,7 @@ public class MoveController extends PSMove implements MoveConstants {
 	   * 
 	   * @return a float array containing one value
 	   */
-	  public float get_quat1() {
+	  float get_quat1() {
 	    return quat1[0];
 	  }
 
@@ -326,7 +399,7 @@ public class MoveController extends PSMove implements MoveConstants {
 	   * 
 	   * @return a float array containing one value
 	   */
-	  public float get_quat2() {
+	  float get_quat2() {
 	    return quat2[0];
 	  }
 
@@ -337,7 +410,7 @@ public class MoveController extends PSMove implements MoveConstants {
 	   * 
 	   * @return a float array containing one value
 	   */
-	  public float get_quat3() {
+	  float get_quat3() {
 	    return quat3[0];
 	  }
 
@@ -348,7 +421,7 @@ public class MoveController extends PSMove implements MoveConstants {
 	   * 
 	   * @return a float array containing one value
 	   */
-	  public float get_ax() {
+	  float get_ax() {
 	    return ax[0];
 	  }
 
@@ -359,7 +432,7 @@ public class MoveController extends PSMove implements MoveConstants {
 	   * 
 	   * @return a float array containing one value
 	   */
-	  public float get_ay() {
+	  float get_ay() {
 	    return ay[0];
 	  }
 
@@ -370,7 +443,7 @@ public class MoveController extends PSMove implements MoveConstants {
 	   * 
 	   * @return a float array containing one value
 	   */
-	  public float get_az() {
+	  float get_az() {
 	    return az[0];
 	  }
 
@@ -382,32 +455,85 @@ public class MoveController extends PSMove implements MoveConstants {
 	   * 
 	   * @return a float array containing one value
 	   */
-	  public float get_gx() {
+	  float get_gx() {
 	    return gx[0];
 	  }
 
-	  public float get_gy() {
+	  /**
+	   * Get calibrated gyroscope value (y axis)
+	   * 
+	   * You need to call psmove_poll() first to read new data from the controller.
+	   * 
+	   * @return a float array containing one value
+	   */
+	  float get_gy() {
 	    return gy[0];
 	  }
 
-	  public float get_gz() {
+	  /**
+	   * Get calibrated gyroscope value (z axis)
+	   * 
+	   * You need to call psmove_poll() first to read new data from the controller.
+	   * 
+	   * @return a float array containing one value
+	   */
+	  float get_gz() {
 	    return gz[0];
 	  }
 
 	  // Magnetometers
-	  public float get_mx() {
+	  /**
+	   * Get calibrated magnetometer value (x axis)
+	   * 
+	   * You need to call psmove_poll() first to read new data from the controller.
+	   * 
+	   * @return a float array containing one value
+	   */
+	  float get_mx() {
 	    return mx[0];
 	  }
 
-	  public float get_my() {
+	  /**
+	   * Get calibrated magnetometer value (y axis)
+	   * 
+	   * You need to call psmove_poll() first to read new data from the controller.
+	   * 
+	   * @return a float array containing one value
+	   */
+	  float get_my() {
 	    return my[0];
 	  }
 
-	  public float get_mz() {
+	  /**
+	   * Get calibrated magnetometer value (z axis)
+	   * 
+	   * You need to call psmove_poll() first to read new data from the controller.
+	   * 
+	   * @return a float array containing one value
+	   */
+	  float get_mz() {
 	    return mz[0];
 	  }
 
 	  // Buttons get
+	  
+	  public boolean[] getPressedEvents() {  
+		  boolean[] events = new boolean[9];
+		  for(int i=0; i<moveButtons.length; i++) {
+			  MoveButton button = moveButtons[i];
+			  events[i] = button.isPressedEvent(1);
+		  }
+		  return events;
+	  }
+	  
+	  public boolean[] getReleasedEvents() {  
+		  boolean[] events = new boolean[9];
+		  for(int i=0; i<moveButtons.length; i++) {
+			  MoveButton button = moveButtons[i];
+			  events[i] = button.isReleasedEvent(1);
+		  }
+		  return events;
+	  }
 
 	  public int get_trigger_value() {
 	    return moveButtons[TRIGGER_BTN].getValue();
@@ -546,27 +672,63 @@ public class MoveController extends PSMove implements MoveConstants {
 	    boolean event = moveButtons[PS_BTN].isReleasedEvent();
 	    return event;
 	  }
+	  
 
-	  // --- Getters & Setters --------------------
+	  //========= Getters & Setters =========
 	  
 	  public String getSerial() {
 		 serial = super.get_serial(); // Save the serial of the controller
 		 return serial;
 	  }
+	  
+	  
+	  /** Get the battery status as an int
+	   * 
+	   * 	Batt_MIN           = 0;
+	   *    Batt_20Percent     = 1;
+	   *    Batt_40Percent     = 2;
+	   *    Batt_60Percent     = 3;
+	   *    Batt_80Percent     = 4;
+	   *    Batt_MAX           = 5;
+	   *    Batt_CHARGING      = 6;
+	   *    Batt_CHARGING_DONE = 7;
+	   * 
+	   * @return the status as an int 
+	   */
+	  public int getBattery() {
+		  return battery_level;
+	  }
+	  
+	  
+	  /** Get the plain text version of the charge status
+	   * 
+	   *  "low"
+	   *  "20%"
+	   *  "40%"
+	   *  "60%"
+	   *  "80"
+	   *  "charging..."
+	   *  "fully charged"
+	   * 
+	   * @return the status as a String
+	   */
+	  public String getBatteryName() {
+		  return battery_name;
+	  }
 
-	public int getConnectionType() {
+	  public int getConnectionType() {
 	    connection_type = super.getConnection_type();
 	    connection_name = connection_toString(connection_type);
 	    return connection_type;
 	  }
 
-	public void setRumble(int level) {
-	    rumbleLevel = level;
-	    super.set_rumble(level);
-	  }
-
 	  public int getRumble() {
 	    return rumbleLevel;
+	  }
+	  
+	  public void setRumble(int level) {
+		    rumbleLevel = level;
+		    super.set_rumble(level);
 	  }
 
 	  public void setLeds(int r, int g, int b) {
@@ -802,7 +964,7 @@ public class MoveController extends PSMove implements MoveConstants {
 	  /**
 	  * Translate the battery level from int (enum) to a readable form
 	  * 
-	  * @param level The charging status as an hex int (from 0x00 = "low" to 0xEF = "charging done")
+	  * @param level The charging status as an int (from 0 = "low" to 7 = "charging done")
 	  * @return The charging status as a String for printing in messages. 
 	  *              
 	  */
@@ -828,22 +990,5 @@ public class MoveController extends PSMove implements MoveConstants {
 	      return "returning [Error in get_battery_level_name()]";
 	    }
 	  }
-
-	  /**
-	   * Print the current battery level, mac adress and connection type of each controller
-	   *  
-	   * @return True if everything went fine, False in case of error
-	   */
-	  public boolean printController() {
-	    if (null==battery_name || null==serial) {
-	      if (debug && null==serial) System.out.println("Error in MoveController.printController(): serial variable not yet instanciated.");
-	      if (debug && null==battery_name) System.out.println("Error in MoveController.printController(): battery_name variable not yet instanciated.");
-	      return false;
-	    }
-	    else {
-	      System.out.println("PS Move with MAC address: "+serial+ " | Battery "+battery_name+" | Connected via "+connection_name);
-	    }
-	    return true;
-	  }
-	}
+}
 

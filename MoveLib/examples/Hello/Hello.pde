@@ -15,11 +15,11 @@ MoveController move;
 
 void setup() {
 
+  size(640,480,P2D);
+  
   ml = new MoveLib(this);  
   
-  
   moveManager = new MoveManager(1);              // Enable move support (pass 1 to activate debug messages)
-  // moveManager.stream(this, 12000, 12000);     // Send the data via OSC (sketch instance, listening port, sending port)
   moveManager.enableOrientation();               // Activate sensor fusion for all controllers
   moveManager.setLeds(10,255,100);               // Turn the LEDs green on start
   moveManager.startTracking();
@@ -49,6 +49,15 @@ void moveHandle() {
     
     PVector pos = move.getPosition();
     println("x:"+pos.x+" y:"+ pos.y +" z:"+ pos.z);
+    
+    PImage img = createImage(0,0,RGB);
+    if(moveManager.isTracking()) {
+      img = moveManager.getImage();
+    }
+    if(null != img) {
+      image(img, 0, 0);
+    }
+     
     //PVector orientation = move.getOrientation();
     
   }

@@ -7,6 +7,8 @@ import processing.core.PImage;
 import processing.core.PVector;
 
 public class MoveTracker extends PSMoveTracker implements PConstants {
+	
+	private boolean debug = false;           // Print debug messages?
 
 	byte [] pixels;
 	PImage trackerImage;
@@ -22,6 +24,15 @@ public class MoveTracker extends PSMoveTracker implements PConstants {
 		super();
 		super.set_mirror(1); // Mirror the tracker image horizontally by default
 		calibrate(move);
+	}
+	
+	/** 
+	 * Print debug messages ? 
+	 * 
+	 * @param b true for printing debug message, false for silent run
+	 */
+	public void debug(boolean b) {
+	  debug = b;
 	}
 	
 	public PVector getPosition(MoveController move) {
@@ -68,6 +79,21 @@ public class MoveTracker extends PSMoveTracker implements PConstants {
 	 */
 	public void setMirror(int b) {
 		super.set_mirror(b);
+	}
+	
+	
+	/** Returns the current image from the tracker or null if none available
+	 * 
+	 * @return a PImage or null
+	 */
+	public Object getImage() {
+	  if (trackerImage != null) {
+		  return trackerImage;
+	  }
+	  else {
+		 if(debug) System.out.println("MoveTracker.getImage() will return null: couldn't find trackerImage.");
+	  }
+	  return null;	
 	}
 	
 	
