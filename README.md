@@ -35,6 +35,11 @@ Refer to the comments in the examples for indications on how to get started.
 ## Examples
 
 * [Hello](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/Hello/Hello.pde)
+* [setLeds](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/setLeds/setLeds.pde)
+* [setRumble](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/setRumble/setRumble.pde)
+* [orientation](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/orientation/orientation.pde)
+* [tracker_image](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/tracker_image/tracker_image.pde)
+* Check the *examples* folder for more...
 
 ## Tested
 
