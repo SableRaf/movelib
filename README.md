@@ -18,15 +18,15 @@ Unzip and put the extracted *MoveLib* folder into the libraries folder of your P
 
 ## Pairing
 
-Pairing of the PS Move Controllers is done via the [psmovepair](https://raw.github.com/SableRaf/movelib/master/tools/psmovepair) script. Plug your controller to the computer with a mini-USB cable and run the script. Repeat for all controllers if necessary. The script will get the sensor calibration information of the controller and allow it to be recognized as a bluetooth peripheral. If you later use the controller with your console or another computer, you will need to the pairing again.
+Pairing of the PS Move Controllers is done via the [psmovepair](https://raw.github.com/SableRaf/movelib/master/tools/psmovepair) script you will find in the *tools* folder. Plug your controller to the computer with a mini-USB cable and run the script. Repeat for all controllers if necessary. The script will get the sensor calibration information of the controller and allow it to be recognized as a bluetooth peripheral. If you later use the controller with your console or another computer, you will need to the pairing again.
 
 Note: Pairing currently works on Mac OS and Linux only. 
 
-## Usage
+## Sphere tracking
 
-Refer to the comments in the examples for indications on how to get started.
+The PSeye camera does not have a MacOS driver. Here is the calibration process for the internal camera on Mac computers. Launch the sketch and put the sphere in front of the camera so that it touches the lense. The LEDs will light in white for a few seconds. Then move the controller further from the lense as it starts to blink in a solid color. It tracking should start after a few seconds.
 
-*Note: The iSight/Facetime camera support is still very much a hack and only supports up to two simultaneous controllers.*
+Note: The iSight/Facetime camera support is still very much a hack and only supports up to two simultaneous controllers.*
 
 ## Snapshot
 
