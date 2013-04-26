@@ -20,20 +20,13 @@ void setup() {
   int    connection      = move.getConnection();
   String connectionName  = move.getConnectionName();
   
-  if(connection<2)
-    println("Found a controller connected via "+ connectionName);
+  println("Found a controller connected via "+ connectionName);
 
 }
 
 
 void draw() { 
-  
-  moveManager.update();        // Update and poll all active controllers
-}
-
-void keyPressed() {      
-   if(key=='b'|| key=='B')
-      moveManager.printAllControllers(); // print the info about all connected controllers
+ noLoop(); 
 }
 
 void exit() {
@@ -41,5 +34,5 @@ void exit() {
   moveManager.shutdown(); // We clean after ourselves (stop rumble and LEDs off)
   super.exit();           // Whatever Processing usually does at shutdown
 
-}
+} // Note: this function is not called on closing the sketch with the "stop" button
 

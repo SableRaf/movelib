@@ -7,8 +7,6 @@ MoveLib ml;
 // The abstraction layer used to communicate with the controller(s)
 MoveManager moveManager;
 
-import java.util.Set;
-
 // Will receive MoveController objects from the moveManager
 MoveController move;
 
@@ -29,10 +27,10 @@ void setup() {
   // Initialise the library object
   ml = new MoveLib(this);  
   
-  moveManager = new MoveManager(1);              // Enable move support (pass 1 to activate debug messages)
-  moveManager.setLeds(10,255,100);               // Turn the LEDs green on start
+  moveManager = new MoveManager(1);     // Enable move support (pass 1 to activate debug messages)
+  moveManager.setLeds(10,255,100);      // Turn the LEDs green on start
 
-  move = moveManager.getController(0); // Grab each controller    
+  move = moveManager.getController(0);  // Grab first connected controller    
 
 }
 
@@ -100,7 +98,9 @@ void keyPressed() {
 }
 
 void exit() {
+  
   moveManager.shutdown(); // We clean after ourselves (stop rumble and lights off)
   super.exit();           // Whatever Processing usually does at shutdown
-}
+
+} // Note: this function is not called on closing the sketch with the "stop" button
   

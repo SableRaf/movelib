@@ -14,11 +14,11 @@ public class MoveController extends PSMove implements MoveConstants {
 	
       MoveManager parent;
 
-	  private boolean debug = false;           // Print debug messages?
+	  private boolean debug = false;              // Print debug messages?
 
-	  private boolean has_orientation = false; // Defines if the controller will be configured for sensor fusion
+	  private boolean orientationEnabled = false; // Defines if the controller will be configured for sensor fusion
 
-	  private String serial;                   // What is the MAC adress of the controller?  
+	  private String serial;                      // What is the MAC adress of the controller?  
 
 	  int triggerValue, previousTriggerValue;
 
@@ -75,6 +75,8 @@ public class MoveController extends PSMove implements MoveConstants {
 	    getConnectionType();
 	    createButtons();
 	    updatePoll();
+	    enableOrientation();
+	    resetOrientation();
 	  }
 	  
 	  /** 
@@ -100,31 +102,69 @@ public class MoveController extends PSMove implements MoveConstants {
 	  /** 
 	  * Enable orientation tracking.
 	  * 
-	  * This will enable orientation tracking and update the internal orientation quaternion.
+	  * This will enable sensor fusion and update the internal orientation quaternion.
 	  * 
 	  * In addition to enabling the orientation tracking features, calibration data and an orientation algorithm (usually built-in) has to be used, too. You can use orientation_available() after enabling orientation tracking to check if orientation features can be used.
 	  */
-	  void enableOrientation() {
+	  public void enableOrientation() {
 		if(orientationAvailable()) {
-		    has_orientation = true;
-		    super.enable_orientation(1); // We need to tell the PSMove object to activate sensor fusion
+		    orientationEnabled = true;
+		    super.enable_orientation(1); // Enable sensor fusion
 		    super.reset_orientation();   // Set the quaternions to their start values [1, 0, 0, 0]
+		    if(debug) System.out.println("Orientation enabled for controller ["+serial+"]");
 		}
 		else if(debug) System.out.println("No orientation available for controller ["+serial+"]");
 	  }
 	  
+	  /** 
+	  * Disable orientation tracking.
+	  * This will disable sensor fusion for that controller
+	  * 
+	  */
+	  public void disableOrientation() {
+		orientationEnabled = false;
+		super.enable_orientation(0); // Disable sensor fusion
+	  }
 	  
 	  /** 
-	   * Check if orientation features can be used.
+	   * Check if sensor fusion is enabled
 	   * 
-	   * @return True if orientation is available for the controller, false otherwise
+	   * @return True if orientation is enabled for the controller, false otherwise
 	   */
-	  boolean orientationAvailable() {
-		  has_orientation = super.has_orientation() == 1 ? 
-				            true : 
-				            false;
-		  return has_orientation;
+	  public boolean orientationEnabled() {
+		  return orientationEnabled;
 	  }
+	  
+	  /** 
+	   * The orientation tracking feature depends on the availability of an orientation tracking algorithm (usually built-in) and the calibration data availability.
+	   * 
+	   * If this function returns false, the orientation features will not work properly.
+	   * 
+	   * @return True if orientation tracking is available for the controller, false otherwise
+	   */
+	  public boolean orientationAvailable() {
+		  int hasOrientation = super.has_orientation();
+		  		  
+		  boolean available = (hasOrientation == 1) ? 
+				  			  true : 
+				              false;
+		  
+		  //return available;
+		  return true; // There until the calibration data issue is solved
+	  }
+	  
+	  /**
+	   * PSMove.has_calibration() is not yet available in the Java bindings of the API
+	   */
+	  // public boolean calibrationAvailable() {
+	  //   int hasCalibration = super.has_calibration();
+  	  //   
+      //   boolean available = (hasCalibration == 1) ? 
+      // 		  			   true : 
+	  //		               false;
+	  // 
+	  //   return available;
+	  // }
 	  
 	  /** 
 	   * Set the orientation quaternions to their start values [1, 0, 0, 0]
@@ -185,14 +225,14 @@ public class MoveController extends PSMove implements MoveConstants {
 	    readings.put("sensors/mag/y",get_my());
 	    readings.put("sensors/mag/z",get_mz());
 	    
-	    if(has_orientation) {   
+	    if(orientationEnabled) {   
 	      readings.put("orientation/quat/0",get_quat0());
 	      readings.put("orientation/quat/1",get_quat1());
 	      readings.put("orientation/quat/2",get_quat2());
 	      readings.put("orientation/quat/3",get_quat3());
 	    }
 	    
-	    readings.put("buttons/triggerValue", (float)get_trigger_value());
+	    readings.put("buttons/triggerValue", (float)getTriggerValue());
 	    
 	    float pressed = 0.f;
 	    
@@ -535,7 +575,7 @@ public class MoveController extends PSMove implements MoveConstants {
 		  return events;
 	  }
 
-	  public int get_trigger_value() {
+	  public int getTriggerValue() {
 	    return moveButtons[TRIGGER_BTN].getValue();
 	  }
 

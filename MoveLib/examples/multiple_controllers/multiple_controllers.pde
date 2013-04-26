@@ -60,7 +60,9 @@ void keyPressed() {
 }
 
 void exit() {
+  
   moveManager.shutdown(); // We clean after ourselves (stop rumble and lights off)
   super.exit();           // Whatever Processing usually does at shutdown
-}
+
+} // Note: this function is not called on closing the sketch with the "stop" button
   

@@ -7,70 +7,42 @@ MoveLib ml;
 // The abstraction layer used to communicate with the controller(s)
 MoveManager moveManager;
 
-import java.util.Set;
-
 // Will not be initialized but will receive 
 // MoveController objects from the moveManager
 MoveController move;
 
 void setup() {
-
-  size(640,480,P2D);
   
-  ml = new MoveLib(this);  
+  // Instanciate the lib
+  ml = new MoveLib(this);           
   
-  moveManager = new MoveManager(1);              // Enable move support (pass 1 to activate debug messages)
-  moveManager.enableOrientation();               // Activate sensor fusion for all controllers
-  moveManager.setLeds(10,255,100);               // Turn the LEDs green on start
-  moveManager.startTracking();
+  // Enable move support. Try 'MoveManager(1)' to activate debug messages
+  moveManager = new MoveManager();   
+  
+  // Print the info about all connected controllers
+  moveManager.printAllControllers(); 
+
 }
 
-void draw() {  
-  moveHandle();
+void draw() {
+
+  // Set the color of the sphere. Note: update() must be called 
+  // for the controllers to actually get the message
+  moveManager.setLeds(10,150,255);
+  
+  // Poll the controller for new information and send the LED and rumble values
+  moveManager.update();             
+  
 }
 
-void moveHandle() {
-   for(int i=0; i<moveManager.getCount(); i++) { // Loop through all connected controllers
-    move = moveManager.getController(i); // Grab each controller
-      
-    if (move.isMovePressedEvent()) { // What happens the moment I press the MOVE button?
-      move.setLeds(255,20,10);       // Turn the LEDs red
-      move.setRumble(255);           // Vibration at maximum
-    }
-      
-    if (move.isMoveReleasedEvent()) { // What happens the moment I release the MOVE button?
-      move.setLeds(0, 100, 255);      // Turn the LEDs blue
-      move.setRumble(0);              // Vibration off
-    }
-    
-    if (move.isSelectPressedEvent()) {
-      move.resetOrientation(); // Set the orientation quaternions to their start values [1, 0, 0, 0]
-    }
-    
-    PVector pos = move.getPosition();
-    println("x:"+pos.x+" y:"+ pos.y +" z:"+ pos.z);
-    
-    PImage img = createImage(0,0,RGB);
-    if(moveManager.isTracking()) {
-      img = moveManager.getImage();
-    }
-    if(null != img) {
-      image(img, 0, 0);
-    }
-     
-    //PVector orientation = move.getOrientation();
-    
-  }
-  moveManager.update(); // Read new input and update actuators (leds & rumble) for all controllers 
-}
-
-void keyPressed() {      
-   if(key=='b'|| key=='B')
-      moveManager.printAllControllers(); // print the info about all connected controllers
-}
 
 void exit() {
-  moveManager.shutdown(); // We clean after ourselves (stop rumble and lights off)
-  super.exit();           // Whatever Processing usually does at shutdown
-}
+  
+  // We clean after ourselves (stop rumble and lights off)
+  moveManager.shutdown(); 
+  
+  // Whatever Processing usually does at shutdown
+  super.exit();  
+  
+} // Note: this function is not called on closing the sketch with the "stop" button
   
