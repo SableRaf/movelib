@@ -7,10 +7,6 @@ MoveLib ml;
 // The abstraction layer used to communicate with the controller(s)
 MoveManager moveManager;
 
-// Will not be initialized but will receive 
-// MoveController objects from the moveManager
-MoveController move;
-
 void setup() {
   
   // Instanciate the lib
