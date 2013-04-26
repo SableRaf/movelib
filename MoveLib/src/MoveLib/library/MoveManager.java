@@ -138,6 +138,9 @@ public class MoveManager implements MoveConstants {
 	    }
 	  }
 	  
+	  /**
+	   * Poll active controllers for new values and update the LED and vibration
+	   */
 	  public void update() {
 	    if(!orderedControllers.isEmpty()) { // Do we actually have controllers to update?
 	      for (int i=0; i<orderedControllers.size(); i++) {
@@ -150,7 +153,9 @@ public class MoveManager implements MoveConstants {
 	    if(null != moveTracker) moveTracker.updateAll();
 	  }
 	  
-	  
+	  /**
+	   * Deactivate all controllers (doesn't disconnects them from the computer)
+	   */
 	  public void shutdown() {
 	    if(!controllers.isEmpty()) { // Do we actually have controllers to shut down?
 	      for (String id: controllers.keySet()) {
@@ -160,7 +165,9 @@ public class MoveManager implements MoveConstants {
 	    }
 	  }
 	  
-	  // Activate sensor fusion for all controllers
+	  /**
+	   * Activate sensor fusion for all controllers
+	   */
 	  public void enableOrientation() {
 	    if(!controllers.isEmpty()) { // Do we actually have controllers to enable?
 	      for (String id: controllers.keySet()) {
@@ -188,7 +195,10 @@ public class MoveManager implements MoveConstants {
 	  }
 	  */
 	  
-	   // Print debug messages?
+	   /**
+	    * Set the debug status of the manager
+	    * @param b pass true to enable debug, false to disable
+	    */
 	  protected void debug(boolean b) {
 	    debug = b;
 	      for (String id: controllers.keySet()) {
@@ -287,6 +297,10 @@ public class MoveManager implements MoveConstants {
 
 	  // --- Getters & Setters ----------------------
 	  
+	  /**
+	   * Get how many controllers are connected to the computer.
+	   * @return an int
+	   */
 	  public int getCount() {
 	   return unique_connected;
 	  }

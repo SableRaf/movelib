@@ -63,39 +63,7 @@ public class MoveLib  implements MoveConstants, PConstants {
 	 */
 	public MoveLib(PApplet theParent) {
 		parent = theParent;
-		welcome();
-		
-	    // Check to see if the host applet implements public void moveButtonEvent(MoveLib m)
-	    try {
-	      moveButtonEvent =
-	      parent.getClass().getMethod("moveButtonEvent",
-	                                    new Class[] { MoveLib.class });
-	    } catch (Exception e) {
-	      // no such method, or an error.. which is fine, just ignore
-	    }
-	}
-	
-	/** 
-	 * Method that's called just after beginDraw(), meaning that it can affect drawing.
-	 */
-	public void pre() {
-	}
-	
-	/** 
-	 * Fire the moveButtonEvent() method
-	 */
-	public void makeEvent() {
-		if (moveButtonEvent != null) {
-		  try {
-		  	moveButtonEvent.invoke(parent, new Object[] { this });
-		  } catch (Exception e) {
-		    System.err.println("Disabling moveButtonEvent() for because of an error.");
-		    e.printStackTrace();
-		    moveButtonEvent = null;
-		  }
-		}
-	}
-	
+	}	
 	
 	/**
 	 * 
@@ -107,7 +75,6 @@ public class MoveLib  implements MoveConstants, PConstants {
 	
 	
 	/**
-	 * 
 	 * @param debug
 	 * 			pass 1 for debug messages, 0 for silent run
 	 * @return MoveManager

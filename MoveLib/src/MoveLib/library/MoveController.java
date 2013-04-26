@@ -300,13 +300,20 @@ public class MoveController extends PSMove implements MoveConstants {
 
 	  // --- Getters & Setters --------------------
 	  
-	  
+	  /** 
+	   * Get the controller's position
+	   * @return a PVector object containing the x, y and radius of the sphere as it appears in the tracker image.
+	   */
 	  public PVector getPosition() {
 		  PVector pos = new PVector(-1,-1,-1);
 		  pos = parent.getPosition(this);
 		  return pos;
 	  }
-
+	 
+	  /**
+	   * Get the sphere's color
+	   * @return a Color object
+	   */
 	  public int getSphereColor() {
 	    return sphereColor;
 	  }
@@ -365,22 +372,37 @@ public class MoveController extends PSMove implements MoveConstants {
 	   return orientation;
 	  }
 
-	  
+	  /**
+	   * Get the orientation of the controller
+	   * @return a float[] array containing the four quaternions values
+	   */
 	  public float[] getQuaternions() {
 		  float[] quat = new float[]{ get_quat0() , get_quat1(), get_quat2(), get_quat3() };
 		  return quat;
 	  }
 	  
+	  /**
+	   * Get the calibrated values of the accelerometers.
+	   * @return a PVector containing the 3 float values.
+	   */
 	  public PVector getAccelerometers() {
 		  PVector acc = new PVector( get_ax(), get_ay(), get_az() );
 		  return acc;
 	  }
 	  
+	  /**
+	   * Get the calibrated values of the gyroscopes.
+	   * @return a PVector containing the 3 float values.
+	   */
 	  public PVector getGyroscopes() {
 		  PVector gyr = new PVector( get_gx(), get_gy(), get_gz() );
 		  return gyr;
 	  }
 
+	  /**
+	   * Get the calibrated values of the magnetometers.
+	   * @return a PVector containing the 3 float values.
+	   */
 	  public PVector getMagnetometers() {
 		  PVector mag = new PVector( get_mx(), get_my(), get_mz() );
 		  return mag;
@@ -557,6 +579,10 @@ public class MoveController extends PSMove implements MoveConstants {
 
 	  // Buttons get
 	  
+	  /**
+	   * Get the press events for the 9 buttons of the controller.
+	   * @return a boolean[] array.
+	   */
 	  public boolean[] getPressedEvents() {  
 		  boolean[] events = new boolean[9];
 		  for(int i=0; i<moveButtons.length; i++) {
@@ -566,6 +592,10 @@ public class MoveController extends PSMove implements MoveConstants {
 		  return events;
 	  }
 	  
+	  /**
+	   * Get the release events for the 9 buttons of the controller.
+	   * @return a boolean[] array.
+	   */
 	  public boolean[] getReleasedEvents() {  
 		  boolean[] events = new boolean[9];
 		  for(int i=0; i<moveButtons.length; i++) {
@@ -575,42 +605,83 @@ public class MoveController extends PSMove implements MoveConstants {
 		  return events;
 	  }
 
+	  
+	  /**
+	   * Get how much pressure is on the trigger.
+	   * @return an int from 0 to 255
+	   */
 	  public int getTriggerValue() {
 	    return moveButtons[TRIGGER_BTN].getValue();
 	  }
 
+	  /**
+	   * Is the trigger being pressed?
+	   * @return a boolean
+	   */
 	  public boolean isTriggerPressed() {
 	    return moveButtons[TRIGGER_BTN].isPressed();
 	  }
 
+	  /**
+	   * Is the 'Move' button being pressed?
+	   * @return a boolean
+	   */
 	  public boolean isMovePressed() {
 	    return moveButtons[MOVE_BTN].isPressed();
 	  }
 
+	  /**
+	   * Is the 'square' button being pressed?
+	   * @return a boolean
+	   */
 	  public boolean isSquarePressed() {
 	    return moveButtons[SQUARE_BTN].isPressed();
 	  }
 
+	  /**
+	   * Is the 'triangle' button being pressed?
+	   * @return a boolean
+	   */
 	  public boolean isTrianglePressed() {
 	    return moveButtons[TRIANGLE_BTN].isPressed();
 	  }
 
+	  /**
+	   * Is the 'cross' button being pressed?
+	   * @return a boolean
+	   */
 	  public boolean isCrossPressed() {
 	    return moveButtons[CROSS_BTN].isPressed();
 	  }
 
+	  /**
+	   * Is the 'circle' button being pressed?
+	   * @return a boolean
+	   */
 	  public boolean isCirclePressed() {
 	    return moveButtons[CIRCLE_BTN].isPressed();
 	  }
 
+	  /**
+	   * Is the 'select' button being pressed?
+	   * @return a boolean
+	   */
 	  public boolean isSelectPressed() {
 	    return moveButtons[SELECT_BTN].isPressed();
 	  }
 
+	  /**
+	   * Is the 'start' button being pressed?
+	   * @return a boolean
+	   */
 	  public boolean isStartPressed() {
 	    return moveButtons[START_BTN].isPressed();
 	  }
 
+	  /**
+	   * Is the 'PS' button being pressed?
+	   * @return a boolean
+	   */
 	  public boolean isPsPressed() {
 	    return moveButtons[PS_BTN].isPressed();
 	  }    
@@ -621,46 +692,82 @@ public class MoveController extends PSMove implements MoveConstants {
 
 	  // Pressed
 
+	  /**
+	   * Was the 'trigger' button just pressed?
+	   * @return a boolean
+	   */
 	  public boolean isTriggerPressedEvent() {
 	    boolean event = moveButtons[TRIGGER_BTN].isPressedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'move' button just pressed?
+	   * @return a boolean
+	   */
 	  public boolean isMovePressedEvent() {
 	    boolean event = moveButtons[MOVE_BTN].isPressedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'square' button just pressed?
+	   * @return a boolean
+	   */
 	  public boolean isSquarePressedEvent() {
 	    boolean event = moveButtons[SQUARE_BTN].isPressedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'triangle' button just pressed?
+	   * @return a boolean
+	   */
 	  public boolean isTrianglePressedEvent() {
 	    boolean event = moveButtons[TRIANGLE_BTN].isPressedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'cross' button just pressed?
+	   * @return a boolean
+	   */
 	  public boolean isCrossPressedEvent() {
 	    boolean event = moveButtons[CROSS_BTN].isPressedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'circle' button just pressed?
+	   * @return a boolean
+	   */
 	  public boolean isCirclePressedEvent() {
 	    boolean event = moveButtons[CIRCLE_BTN].isPressedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'select' button just pressed?
+	   * @return a boolean
+	   */
 	  public boolean isSelectPressedEvent() {
 	    boolean event = moveButtons[SELECT_BTN].isPressedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'start' button just pressed?
+	   * @return a boolean
+	   */
 	  public boolean isStartPressedEvent() {
 	    boolean event = moveButtons[START_BTN].isPressedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'PS' button just pressed?
+	   * @return a boolean
+	   */
 	  public boolean isPsPressedEvent() {
 	    boolean event = moveButtons[PS_BTN].isPressedEvent();
 	    return event;
@@ -668,46 +775,82 @@ public class MoveController extends PSMove implements MoveConstants {
 
 	  // Released
 
+	  /**
+	   * Was the 'trigger' button just released?
+	   * @return a boolean
+	   */
 	  public boolean isTriggerReleasedEvent() {
 	    boolean event = moveButtons[TRIGGER_BTN].isReleasedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'move' button just released?
+	   * @return a boolean
+	   */
 	  public boolean isMoveReleasedEvent() {
 	    boolean event = moveButtons[MOVE_BTN].isReleasedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'square' button just released?
+	   * @return a boolean
+	   */
 	  public boolean isSquareReleasedEvent() {
 	    boolean event = moveButtons[SQUARE_BTN].isReleasedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'triangle' button just released?
+	   * @return a boolean
+	   */
 	  public boolean isTriangleReleasedEvent() {
 	    boolean event = moveButtons[TRIANGLE_BTN].isReleasedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'cross' button just released?
+	   * @return a boolean
+	   */
 	  public boolean isCrossReleasedEvent() {
 	    boolean event = moveButtons[CROSS_BTN].isReleasedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'circle' button just released?
+	   * @return a boolean
+	   */
 	  public boolean isCircleReleasedEvent() {
 	    boolean event = moveButtons[CIRCLE_BTN].isReleasedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'select' button just released?
+	   * @return a boolean
+	   */
 	  public boolean isSelectReleasedEvent() {
 	    boolean event = moveButtons[SELECT_BTN].isReleasedEvent();
 	    return event;
 	  }
 
+	  /**
+	   * Was the 'start' button just released?
+	   * @return a boolean
+	   */
 	  public boolean isStartReleasedEvent() {
 	    boolean event = moveButtons[START_BTN].isReleasedEvent();
 	    return event;
 	  }
-
+	  
+	  /**
+	   * Was the 'PS' button just released?
+	   * @return a boolean
+	   */
 	  public boolean isPsReleasedEvent() {
 	    boolean event = moveButtons[PS_BTN].isReleasedEvent();
 	    return event;
@@ -716,6 +859,10 @@ public class MoveController extends PSMove implements MoveConstants {
 
 	  //========= Getters & Setters =========
 	  
+	  /**
+	   * Get the MAC address of the controller
+	   * @return a String
+	   */
 	  public String getSerial() {
 		 serial = super.get_serial(); // Save the serial of the controller
 		 return serial;
@@ -756,21 +903,39 @@ public class MoveController extends PSMove implements MoveConstants {
 		  return battery_name;
 	  }
 
+	  /**
+	   * Get how the controller is connected to the computer. 
+	   * @return 0 for Bluetooth, 1 for USB, 2 for an error
+	   */
 	  public int getConnectionType() {
 	    connection_type = super.getConnection_type();
 	    connection_name = connection_toString(connection_type);
 	    return connection_type;
 	  }
 
+	  /**
+	   * Get the current rumble value of the controller
+	   * @return an int from 0 to 255
+	   */
 	  public int getRumble() {
 	    return rumbleLevel;
 	  }
 	  
+	  /**
+	   * Set the vibration of the controller
+	   * @param level is an int from 0 to 255
+	   */
 	  public void setRumble(int level) {
 		    rumbleLevel = level;
 		    super.set_rumble(level);
 	  }
 
+	  /** Set the color of the sphere
+	   * 
+	   * @param r is the red value (0 to 255)
+	   * @param g is the green value (0 to 255)
+	   * @param b is the blue value (0 to 255)
+	   */
 	  public void setLeds(int r, int g, int b) {
 	    sphereColor = color(r, g, b);
 	    super.set_leds(r, g, b);
