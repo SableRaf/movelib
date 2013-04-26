@@ -36,14 +36,6 @@ import processing.core.*;
 
 // import io.thp.psmove.*;
 
-
-/**
- * Call MoveLib to initialize PS Move Controller support. 
- * 
- * @example Hello
- * 
- */
-
 public class MoveLib  implements MoveConstants, PConstants {
 	
 	// parent is a reference to the parent sketch
@@ -75,7 +67,7 @@ public class MoveLib  implements MoveConstants, PConstants {
 	
 	
 	/**
-	 * @param debug
+	 * @param mode
 	 * 			pass 1 for debug messages, 0 for silent run
 	 * @return MoveManager
 	 */

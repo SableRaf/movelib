@@ -30,7 +30,7 @@ The PSeye camera does not have a MacOS driver. Here is the calibration process f
 
 ## Snapshot
 
-![Snapshots](https://raw.github.com/SableRaf/movelib/master/reference/capture.png)
+![Snapshots](https://raw.github.com/SableRaf/movelib/master/ressources/capture.png)
 
 ## Examples
 
