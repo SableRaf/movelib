@@ -26,7 +26,7 @@ Note: Pairing currently works on Mac OS and Linux only.
 
 The PSeye camera does not have a MacOS driver. Here is the calibration process for the internal camera on Mac computers. Launch the sketch and put the sphere in front of the camera so that it touches the lense. The LEDs will light in white for a few seconds. Then move the controller further from the lense as it starts to blink in a solid color. It tracking should start after a few seconds.
 
-Note: The iSight/Facetime camera support is still very much a hack and only supports up to two simultaneous controllers.*
+*Note: The iSight/Facetime camera support is still very much a hack and only supports up to two simultaneous controllers.*
 
 ## Snapshot
 
