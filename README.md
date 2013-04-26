@@ -1,6 +1,6 @@
 # MoveLib
 
-A [Processing](http://processing.org/) interface for the [PS Move Controller](http://en.wikipedia.org/wiki/PlayStation_Move) based on the [PS Move API](http://thp.io/2010/psmove/) by Thomas Perl.
+A [Processing](http://processing.org/) interface for the [PS Move Controller](http://en.wikipedia.org/wiki/PlayStation_Move) based on Thomas Perl's [PS Move API](http://thp.io/2010/psmove/).
 
 ## About
 
