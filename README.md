@@ -20,7 +20,7 @@ Unzip and put the extracted *MoveLib* folder into the libraries folder of your P
 
 Pairing of the PS Move Controllers is done via the [psmovepair](https://raw.github.com/SableRaf/movelib/master/tools/psmovepair) script you will find in the *tools* folder. Plug your controller to the computer with a mini-USB cable and run the script. Repeat for other controllers if necessary. The script will get the sensor calibration information of the controller and allow it to be recognized as a bluetooth peripheral. If you later use the controller with your console or another computer, you will need to the pairing again.
 
-Note: Pairing currently works on Mac OS and Linux only. 
+*Note: Pairing currently works on Mac OS and Linux only.*
 
 ## Sphere tracking
 
