@@ -18,13 +18,13 @@ Unzip and put the extracted *MoveLib* folder into the libraries folder of your P
 
 ## Pairing
 
-Pairing of the PS Move Controllers is done via the [psmovepair](https://raw.github.com/SableRaf/movelib/master/MoveLib/tools/psmovepair) script you will find in the *tools* folder. Plug your controller to the computer with a mini-USB cable and run the script. Repeat for other controllers if necessary. The script will get the sensor calibration information of the controller and allow it to be recognized as a bluetooth peripheral. If you later use the controller with your console or another computer, you will need to the pairing again.
+Pairing of the PS Move Controllers is done via the [psmovepair](https://raw.github.com/SableRaf/movelib/master/MoveLib/tools/psmovepair) script you will find in the *tools* folder. Plug your controller to the computer with a mini-USB cable and run the script. Repeat for other controllers if necessary. The script will get the sensor calibration information of the controller as well as allow it to be recognized as a bluetooth peripheral. If you later use the controller with your console or another computer, then want to connect it with the same machine again, you will need to make the pairing again.
 
 *Note: Pairing currently works on Mac OS and Linux only.*
 
 ## Sphere tracking
 
-The PSeye camera does not have a MacOS driver. Here is the calibration process for the internal camera on Mac computers. Launch the sketch and put the sphere in front of the camera so that it touches the lense. The LEDs will light in white for a few seconds. Then move the controller further from the lense as it starts to blink in a solid color. It tracking should start after a few seconds.
+The PSeye camera does not have a MacOS driver. Here is the calibration process for the internal camera on Mac computers. Launch the sketch and put the sphere in front of the camera so that it touches the lense. The LEDs will light in white for a few seconds. Then move the controller further from the lense as it starts to blink in a solid color. Tracking should start after a few seconds.
 
 *Note: The iSight/Facetime camera support is still very much a hack and only supports up to two simultaneous controllers.*
 
@@ -66,10 +66,11 @@ For bugs in Movelib itself, please file an issue [here](https://github.com/Sable
 
 * The magnetometer calibration is not implemented yet. The error message saying “Magnetometer in [MAC address of your controller] not yet calibrated.” is normal.
 * MoveManager.startTracking() can't be called in setup() because of a Processing bug. See this post: https://github.com/processing/processing/issues/1735. A temporary solution is shown in the [tracker_image](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/tracker_image/tracker_image.pde) example.
+* The camera tracking sometimes fail to start properly in some cases and the image flips like crazy. I'm working on it.
 
 ## License
 
 * The library is Open Source Software released under the [GNU General Public License](https://raw.github.com/SableRaf/movelib/master/reference/LICENSE.txt). It's developed by [Raphaël de Courville](https://vimeo.com/sableraf/).
 * The PS Move API is released under the [Simplified BSD-style license](https://raw.github.com/thp/psmoveapi/master/COPYING). It's developed by Thomas Perl <[m@thp.io](mailto:m@thp.io)>.
 
-*This README file was last updated on 2013-04-26 by Raphaël de Courville.*
+*This README file was last updated on 2013-05-04 by Raphaël de Courville.*
