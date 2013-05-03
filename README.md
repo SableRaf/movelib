@@ -66,7 +66,7 @@ For bugs in Movelib itself, please file an issue [here](https://github.com/Sable
 
 * The magnetometer calibration is not implemented yet. The error message saying “Magnetometer in [MAC address of your controller] not yet calibrated.” is normal.
 * MoveManager.startTracking() can't be called in setup() because of a Processing bug. See this post: https://github.com/processing/processing/issues/1735. A temporary solution is shown in the [tracker_image](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/tracker_image/tracker_image.pde) example.
-* The camera tracking sometimes fail to start properly in some cases and the image flips like crazy. I'm working on it.
+* The camera tracking sometimes fail to start properly and the image then flips like crazy. I'm working on it.
 
 ## License
 
