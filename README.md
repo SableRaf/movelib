@@ -10,7 +10,7 @@ The lib will eventually add support for sending and receiving the data from the 
 
 ## Download
 
-* [MoveLib.zip v1.0beta1](https://raw.github.com/SableRaf/movelib/master/download/MoveLib.zip)
+* [MoveLib.zip v1.0beta1](https://github.com/SableRaf/movelib/tree/master/MoveLib/download/MoveLib.zip)
 
 ## Installation
 
@@ -34,11 +34,11 @@ The PSeye camera does not have a MacOS driver. Here is the calibration process f
 
 ## Examples
 
-* [Hello](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/Hello/Hello.pde)
-* [setLeds](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/setLeds/setLeds.pde)
-* [setRumble](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/setRumble/setRumble.pde)
-* [orientation](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/orientation/orientation.pde)
-* [tracker_image](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/tracker_image/tracker_image.pde)
+* [Hello](https://github.com/SableRaf/movelib/tree/master/MoveLib/examples/Hello/Hello.pde)
+* [setLeds](https://github.com/SableRaf/movelib/tree/master/MoveLib/examples/setLeds/setLeds.pde)
+* [setRumble](https://github.com/SableRaf/movelib/tree/master/MoveLib/examples/setRumble/setRumble.pde)
+* [orientation](https://github.com/SableRaf/movelib/tree/master/MoveLib/examples/orientation/orientation.pde)
+* [tracker_image](https://github.com/SableRaf/movelib/tree/master/MoveLib/examples/tracker_image/tracker_image.pde)
 * Check the *examples* folder for more...
 
 ## Tested
@@ -64,7 +64,7 @@ For bugs in Movelib itself, please file an issue [here](https://github.com/Sable
 ## Known issues
 
 * The magnetometer calibration is not implemented yet. The error message saying “Magnetometer in [MAC address of your controller] not yet calibrated.” is normal.
-* MoveManager.startTracking() can't be called in setup() because of a Processing bug. See this post: https://github.com/processing/processing/issues/1735. A temporary solution is shown in the [tracker_image](https://raw.github.com/SableRaf/movelib/master/MoveLib/examples/tracker_image/tracker_image.pde) example.
+* MoveManager.startTracking() can't be called in setup() because of a Processing bug. See this post: https://github.com/processing/processing/issues/1735. A temporary solution is shown in the [tracker_image](https://github.com/SableRaf/movelib/tree/master/MoveLib/examples/tracker_image/tracker_image.pde) example.
 * The camera tracking sometimes fail to start properly and the image then flips like crazy. I'm working on it.
 
 ## License
