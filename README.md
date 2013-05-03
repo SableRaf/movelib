@@ -10,7 +10,7 @@ The lib will eventually add support for sending and receiving the data from the 
 
 ## Download
 
-* [MoveLib.zip v1.0beta1](http://s176381904.onlinehome.fr/processing/MoveLib/download/MoveLib.zip)
+* [MoveLib.zip v0.1b1](http://s176381904.onlinehome.fr/processing/MoveLib/download/MoveLib.zip)
 
 ## Installation
 
