@@ -45,11 +45,10 @@ The PSeye camera does not have a MacOS driver. Here is the calibration process f
 
 System:
 
-* OSX
+* OSX, Linux
 
 Processing Version:
 
-* 2.0b7
 * 2.0b8
 
 ## Dependencies
