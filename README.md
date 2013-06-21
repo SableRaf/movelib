@@ -24,7 +24,7 @@ Pairing of the PS Move Controllers is done via the [psmovepair](https://raw.gith
 
 ## Magnetometer calibration
 
-Values from the magnetometers in the controller are dependent on the local magnetic field (how nerdy is that, right?). The *magnetometer_calibration* tool can be used to calibrate the magnetometer output ranges for a given environment. This data will then be used for initializing the magnetometer calibration in future runs of the program until it is reset or re-calibrated. This data is saved in a *Users/yourName/.psmoveapi* folder (on MacOS). Orientation tracking will work without this step but you should use it if accurate orientation tracking matters in your application.
+Values from the magnetometers in the controller are dependent on the local magnetic field (how nerdy is that, right?). The  [magnetometer_calibration](https://raw.github.com/SableRaf/movelib/master/MoveLib/tools/magnetometer_calibration) tool can be used to calibrate the magnetometer output ranges for a given environment. This data will then be used for initializing the magnetometer calibration in future runs of the program until it is reset or re-calibrated. This data is saved in a *Users/yourName/.psmoveapi* folder (on MacOS). Orientation tracking will work without this step but you should use it if accurate orientation tracking matters in your application.
 
 
 ## Sphere tracking
