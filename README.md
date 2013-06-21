@@ -18,13 +18,13 @@ Unzip and put the extracted *MoveLib* folder into the libraries folder of your P
 
 ## Pairing
 
-Pairing of the PS Move Controllers is done via the [psmovepair](https://raw.github.com/SableRaf/movelib/master/MoveLib/tools/psmovepair) script you will find in the *tools* folder. Plug your controller to the computer with a mini-USB cable and run the script (Alternatively, you can drag and drop the file into an open Terminal window and press <enter> in case you want to see what the script does). Repeat for other controllers if necessary. The script will get the sensor calibration information of the controller and save it in a "Users/yourName/.psmoveapi" folder as well as allow it to be recognized as a bluetooth peripheral. If you later use the controller with your console or another computer, then want to connect it with your computer again, you will need to go through the pairing again.
+Pairing of the PS Move Controllers is done via the [psmovepair](https://raw.github.com/SableRaf/movelib/master/MoveLib/tools/psmovepair) script you will find in the *tools* folder. Plug your controller to the computer with a mini-USB cable and run the script (Alternatively, you can drag and drop the file into an open Terminal window and press *Enter* in case you want to see what the script does). Repeat for other controllers if necessary. The script will get the sensor calibration information of the controller and save it in a *Users/yourName/.psmoveapi* folder (on MacOS) as well as allow it to be recognized as a bluetooth peripheral. If you later use the controller with your console or another computer, then want to connect it with your computer again, you will need to go through the pairing again.
 
 *Note: Pairing currently works on Mac OS and Linux only.*
 
 ## Magnetometer calibration
 
-Values from the magnetometers in the controller are dependent on the local magnetic field (how nerdy is that, right?). The "magnetometer_calibration" tool can be used to calibrate the magnetometer output ranges for a given environment. This data will then be used for initializing the magnetometer calibration in future runs of the program until it is reset or re-calibrated. Orientation tracking will work without this step but you should use it if accurate orientation tracking matters in your application.
+Values from the magnetometers in the controller are dependent on the local magnetic field (how nerdy is that, right?). The *magnetometer_calibration* tool can be used to calibrate the magnetometer output ranges for a given environment. This data will then be used for initializing the magnetometer calibration in future runs of the program until it is reset or re-calibrated. This data is saved in a *Users/yourName/.psmoveapi* folder (on MacOS). Orientation tracking will work without this step but you should use it if accurate orientation tracking matters in your application.
 
 
 ## Sphere tracking
@@ -50,7 +50,7 @@ The PSeye camera does not have a MacOS driver. Here is the calibration process f
 
 System:
 
-* OSX, Linux
+* OSX
 
 Processing Version:
 
