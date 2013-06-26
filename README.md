@@ -1,5 +1,7 @@
 # MoveLib
 
+*Note: Movelib is considered beta and may not work consistently on every machine. Please report bugs and submit feature requests on the [issues](https://github.com/SableRaf/movelib/issues) page.*
+
 A [Processing](http://processing.org/) interface for the [PS Move Controller](http://en.wikipedia.org/wiki/PlayStation_Move) based on Thomas Perl's [PS Move API](http://thp.io/2010/psmove/).
 
 ## About
@@ -24,7 +26,11 @@ Pairing of the PS Move Controllers is done via the [psmovepair](https://github.c
 
 ## Magnetometer calibration
 
-Values from the magnetometers in the controller are dependent on the local magnetic field (how nerdy is that, right?). The  [magnetometer_calibration](https://github.com/SableRaf/movelib/tree/master/MoveLib/tools) tool can be used to calibrate the magnetometer output ranges for a given environment. This data will then be used for initializing the magnetometer calibration in future runs of the program until it is reset or re-calibrated. This data is saved in a *Users/yourName/.psmoveapi* folder (on MacOS). Orientation tracking will work without this step but you should use it if accurate orientation tracking matters in your application.
+*Note: Magnetometer calibration isn't important, and the library will just calibrate the magnetometer on-the-fly at runtime if it isn't calibrated before.*
+
+*Note2: You can only calibrate the magnetometer when the controller is connected via Bluetooth, as this is (right now) the only way to read the sensor data.*
+
+Values from the magnetometers in the controller are dependent on the local magnetic field (how nerdy is that, right?). The  [magnetometer_calibration](https://github.com/SableRaf/movelib/tree/master/MoveLib/tools) tool can be used to calibrate the magnetometer output ranges for a given environment. This data will then be used for initializing the magnetometer calibration in future runs of the program until it is reset or re-calibrated. This data is saved in a *Users/yourName/.psmoveapi* folder (on MacOS).
 
 
 ## Sphere tracking
