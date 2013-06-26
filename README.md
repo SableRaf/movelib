@@ -1,4 +1,4 @@
-# MoveLib
+# MoveLib (beta)
 
 *Note: Movelib is considered beta and may not work consistently on every machine. Please report bugs and submit feature requests on the [issues](https://github.com/SableRaf/movelib/issues) page.*
 
