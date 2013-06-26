@@ -83,4 +83,4 @@ For bugs in Movelib itself, please file an issue [here](https://github.com/Sable
 * The library is Open Source Software released under the [GNU General Public License](https://raw.github.com/SableRaf/movelib/master/reference/LICENSE.txt). It's developed by [Raphaël de Courville](https://vimeo.com/sableraf/).
 * The PS Move API is released under the [Simplified BSD-style license](https://raw.github.com/thp/psmoveapi/master/COPYING). It's developed by Thomas Perl <[m@thp.io](mailto:m@thp.io)>.
 
-*This README file was last updated on 2013-05-04 by Raphaël de Courville.*
+*This README file was last updated on 2013-06-26 by Raphaël de Courville.*
