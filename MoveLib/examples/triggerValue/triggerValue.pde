@@ -1,11 +1,8 @@
 // Import the Move Library
 import movelib.library.*;
 
-// The MoveLib object used to initialize the library
-MoveLib ml;
-
 // The layer used to communicate with the controller(s)
-MoveManager moveManager;
+MoveLib moveManager;
 
 // The actual controller
 MoveController move;
@@ -13,8 +10,7 @@ MoveController move;
 
 void setup() {
   
-  ml = new MoveLib(this);              // Initialize the lib
-  moveManager = new MoveManager();     // Enable move support
+  moveManager = new MoveLib(this);     // Initialize communication with the controller(s)
   move = moveManager.getController(0); // Retrieve the first connected controller
   
 }
@@ -24,7 +20,7 @@ void draw() {
   
   int trigger = move.getTriggerValue(); // How much pressure on the trigger? [0-255]
   
-  move.setLeds(50,100,trigger);         // Set the sphere color
+  move.setLeds(200,100,trigger);         // Set the sphere color
   
   move.setRumble(trigger);              // Set the vibration
   

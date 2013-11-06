@@ -10,9 +10,11 @@ Movelib provides a convenient wrapper for the [PS Move API](http://thp.io/2010/p
 
 The lib will eventually add support for sending and receiving the data from the controllers via OSC. An earlier pde version supporting osc can be found [here](https://github.com/SableRaf/MoveP5).
 
+*Note: MoveLib only works on MacOS at the moment since the PS Move API doesn't provide Java wrappers for Linux and Windows.*
+
 ## Download
 
-* [MoveLib.zip v0.1b1](http://s176381904.onlinehome.fr/processing/MoveLib/download/MoveLib.zip)
+* [MoveLib.zip v0.1b2](https://github.com/SableRaf/movelib/raw/master/MoveLib/download/MoveLib.zip)
 
 ## Installation
 
@@ -20,24 +22,20 @@ Unzip and put the extracted *MoveLib* folder into the libraries folder of your P
 
 ## Pairing
 
-Pairing of the PS Move Controllers is done via the [psmovepair](https://github.com/SableRaf/movelib/tree/master/MoveLib/tools) script you will find in the *tools* folder. Plug your controller to the computer with a mini-USB cable and run the script (Alternatively, you can drag and drop the file into an open Terminal window and press *Enter* in case you want to see what the script does). Repeat for other controllers if necessary. The script will get the sensor calibration information of the controller and save it in a *Users/yourName/.psmoveapi* folder (on MacOS) as well as allow it to be recognized as a bluetooth peripheral. If you later use the controller with your console or another computer, then want to connect it with your computer again, you will need to go through the pairing again.
-
-*Note: Pairing currently works on Mac OS and Linux only.*
+Pairing of the PS Move Controllers is done via the *psmovepair* script you will find in the *utils* folder. Plug your controller to the computer with a mini-USB cable and run the script (Alternatively, you can drag and drop the file into an open Terminal window and press *Enter* in case you want to see what the script does). Repeat for other controllers if necessary. The script will get the sensor calibration information of the controller and save it in a *Users/yourName/.psmoveapi* folder (on MacOS) as well as allow it to be recognized as a bluetooth peripheral. If you later use the controller with your console or another computer, then want to connect it with your computer again, you will need to go through the pairing again.
 
 ## Magnetometer calibration
 
-*Note: Magnetometer calibration isn't important, and the library will just calibrate the magnetometer on-the-fly at runtime if it isn't calibrated before.*
+*Note: Magnetometer calibration isn't important, and the library will just calibrate the magnetometer on-the-fly at runtime if it isn't calibrated before. You can ignore error messages saying that a controller has not been calibrated.*
 
 *Note2: You can only calibrate the magnetometer when the controller is connected via Bluetooth, as this is (right now) the only way to read the sensor data.*
 
-Values from the magnetometers in the controller are dependent on the local magnetic field (how nerdy is that, right?). The  [magnetometer_calibration](https://github.com/SableRaf/movelib/tree/master/MoveLib/tools) tool can be used to calibrate the magnetometer output ranges for a given environment. This data will then be used for initializing the magnetometer calibration in future runs of the program until it is reset or re-calibrated. This data is saved in a *Users/yourName/.psmoveapi* folder (on MacOS).
-
+Values from the magnetometers in the controller are dependent on the local magnetic field. The magnetometer_calibration script can be used to calibrate the magnetometer output ranges for a given environment. This data will then be used for initializing the magnetometer calibration in future runs of the program until it is reset or re-calibrated. This data is saved in a *Users/yourName/.psmoveapi* folder (on MacOS).
 
 ## Sphere tracking
 
 The PSeye camera does not have a MacOS driver. Here is the calibration process for the internal camera on Mac computers. Launch the sketch and put the sphere in front of the camera so that it touches the lense. The LEDs will light in white for a few seconds. Then move the controller further from the lense as it starts to blink in a solid color. Tracking should start after a few seconds.
 
-*Note: The iSight/Facetime camera support is still very much a hack and only supports up to two simultaneous controllers.*
 
 ## Snapshot
 
@@ -56,11 +54,11 @@ The PSeye camera does not have a MacOS driver. Here is the calibration process f
 
 System:
 
-* OSX
+* Tested on OSX 10.8.4
 
 Processing Version:
 
-* 2.0b8
+* 2.0.3
 
 ## Dependencies
 
@@ -72,15 +70,16 @@ For problems concerning the core API, please ask to the PSMove [mailing list](ht
 
 For bugs in Movelib itself, please file an issue [here](https://github.com/SableRaf/movelib/issues).
 
-## Known issues
+## Known issues & limitations
 
-* The magnetometer calibration is not implemented yet. The error message saying “Magnetometer in [MAC address of your controller] not yet calibrated.” is normal.
-* MoveManager.startTracking() can't be called in setup() because of a Processing bug. See this post: https://github.com/processing/processing/issues/1735. A temporary solution is shown in the [tracker_image](https://github.com/SableRaf/movelib/tree/master/MoveLib/examples/tracker_image/tracker_image.pde) example.
-* The camera tracking sometimes fail to start properly and the image then flips like crazy. I'm working on it.
+* The lib only works with Java 6
+* The camera tracking sometimes fail to start properly.
+* The tracking will not work properly if you try to use more than two controllers.
+* External cameras are not supported. PS Move API only supports the built-in iSight/Facetime cameras on MacOS, so MoveLib has the same limitation. (see [this issue](https://github.com/thp/psmoveapi/issues/68) )
 
 ## License
 
 * The library is Open Source Software released under the [GNU General Public License](https://raw.github.com/SableRaf/movelib/master/reference/LICENSE.txt). It's developed by [Raphaël de Courville](https://vimeo.com/sableraf/).
 * The PS Move API is released under the [Simplified BSD-style license](https://raw.github.com/thp/psmoveapi/master/COPYING). It's developed by Thomas Perl <[m@thp.io](mailto:m@thp.io)>.
 
-*This README file was last updated on 2013-06-26 by Raphaël de Courville.*
+*This README file was last updated on 2013-11-06 by Raphaël de Courville.*

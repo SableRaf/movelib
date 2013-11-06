@@ -1,11 +1,8 @@
 // Import the Move Library
 import movelib.library.*;
 
-// The MoveLib object used to initialize the library
-MoveLib ml;
-
-// The abstraction layer used to communicate with the controller(s)
-MoveManager moveManager;
+// The layer used to communicate with the controller(s)
+MoveLib moveManager;
 
 // Will receive MoveController objects from the moveManager
 MoveController move;
@@ -25,10 +22,9 @@ final int PS_BTN       = 8;
 void setup() {
   
   // Initialise the library object
-  ml = new MoveLib(this);  
+  moveManager = new MoveLib(this, 1);   // Change to "MoveLib(this,1)" to activate debug messages  
   
-  moveManager = new MoveManager(1);     // Enable move support (pass 1 to activate debug messages)
-  moveManager.setLeds(10,255,100);      // Turn the LEDs green on start
+  moveManager.setLeds(10,255,20);      // Turn the LEDs green on start
 
   move = moveManager.getController(0);  // Grab first connected controller    
 

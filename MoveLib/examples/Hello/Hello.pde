@@ -1,19 +1,13 @@
 // Import the Move Library
 import movelib.library.*;
 
-// The MoveLib object used to initialize the library
-MoveLib ml;
-
 // The abstraction layer used to communicate with the controller(s)
-MoveManager moveManager;
+MoveLib moveManager;
 
 void setup() {
   
-  // Instanciate the lib
-  ml = new MoveLib(this);           
-  
-  // Enable move support. Try 'MoveManager(1)' to activate debug messages
-  moveManager = new MoveManager();   
+  // Initialize communication with the controller(s)
+  moveManager = new MoveLib(this);   // Try 'MoveLib(this, 1)' instead to activate debug messages  
   
   // Print the info about all connected controllers
   moveManager.printAllControllers(); 

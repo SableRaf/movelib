@@ -1,16 +1,12 @@
 // Import the Move Library
 import movelib.library.*;
 
-// The MoveLib object used to initialize the library
-MoveLib ml;
-
 // The layer used to communicate with the controller(s)
-MoveManager moveManager;
+MoveLib moveManager;
 
 void setup() {
   
-  ml = new MoveLib(this);            // Initialize the lib
-  moveManager = new MoveManager();   // Enable move support. Change to "MoveManager(1)" to activate debug messages 
+  moveManager = new MoveLib(this);            // Change to "MoveLib(this,1)" to activate debug messages 
   
 }
 

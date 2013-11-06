@@ -6,11 +6,8 @@ import toxi.geom.Quaternion;
 // Import the Move Library
 import movelib.library.*;
 
-// The MoveLib object used to initialize the library
-MoveLib ml;
-
 // The layer used to communicate with the controller(s)
-MoveManager moveManager;
+MoveLib moveManager;
 
 // The actual controller
 MoveController move;
@@ -23,9 +20,7 @@ void setup() {
   
   size(500,500,P3D);
   
-  ml = new MoveLib(this);              // Instanciate the library class
-  
-  moveManager = new MoveManager(1);    // Enable move support. Change to "MoveManager(1)" to activate debug messages 
+  moveManager = new MoveLib(this);     // Enable move support. Change to "MoveLib(this,1)" to activate debug messages 
   
   move = moveManager.getController(0); // Retreive the first connected controller
   
@@ -38,7 +33,7 @@ void setup() {
 
 void draw() { 
   
-  background(150);
+  background(30);
     
   float[] quat = move.getQuaternions();                  // Retrieve the quaternions values
 
@@ -57,6 +52,7 @@ void draw() {
   rotate(angle, axisX, axisY, axisZ); 
   fill(255);
   scale(height*.05);
+  noStroke();
   box(4, 2, 10);
   popMatrix();
   

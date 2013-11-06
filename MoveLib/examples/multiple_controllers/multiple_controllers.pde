@@ -1,41 +1,34 @@
 // Import the Move Library
 import movelib.library.*;
 
-// The MoveLib object used to initialize the library
-MoveLib ml;
-
 // The abstraction layer used to communicate with the controller(s)
-MoveManager moveManager;
-
-import java.util.Set;
+MoveLib moveManager;
 
 // Will receive MoveController objects from the moveManager
 MoveController move;
 
+int connectedCount;
+
 void setup() {
   
-  // Initialise the library object
-  ml = new MoveLib(this);  
+  moveManager = new MoveLib(this, 1);  // Initialize communication with the controller(s)
   
-  moveManager = new MoveManager(1);              // Enable move support (pass 1 to activate debug messages)
-  moveManager.setLeds(10,255,100);               // Turn the LEDs green on start
-
 }
 
 
 void draw() {  
   
   // How many active controllers do we have?
-  int count = moveManager.getCount();
+  connectedCount = moveManager.getCount();
   
   // Loop through all connected controllers
-  for(int i=0; i< count; i++) {
+  for(int i=0; i< connectedCount; i++) {
     
     move = moveManager.getController(i); // Grab each controller
       
     // Compile a color based on the controller's index
     colorMode(HSB);
-    int hue = (int)map(i, 0, count, 0, 255);
+    int hue = (int)map(i, 0, connectedCount, 0, 255);
     color sphereColor = color(hue,255,255);
     
     // Convert to RBG
@@ -50,17 +43,14 @@ void draw() {
 }
 
 
-void moveHandle() {
-  
-}
-
 void keyPressed() {      
    if(key=='b'|| key=='B')
       moveManager.printAllControllers(); // print the info about all connected controllers
 }
 
+
 void exit() {
-  
+
   moveManager.shutdown(); // We clean after ourselves (stop rumble and lights off)
   super.exit();           // Whatever Processing usually does at shutdown
 

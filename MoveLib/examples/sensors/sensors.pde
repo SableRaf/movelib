@@ -1,11 +1,8 @@
 // Import the Move Library
 import movelib.library.*;
 
-// The MoveLib object used to initialize the library
-MoveLib ml;
-
 // The layer used to communicate with the controller(s)
-MoveManager moveManager;
+MoveLib moveManager;
 
 // The actual controller
 MoveController move;
@@ -13,8 +10,7 @@ MoveController move;
 
 void setup() {
   
-  ml = new MoveLib(this);              // Initialize the lib
-  moveManager = new MoveManager();     // Enable move support. Change to "MoveManager(1)" to activate debug messages 
+  moveManager = new MoveLib(this);     // Change to "MoveLib(this,1)" to activate debug messages 
   move = moveManager.getController(0); // Retreive the first connected controller
 
 }
@@ -25,11 +21,14 @@ void draw() {
   PVector acc = move.getAccelerometers();
   PVector mag = move.getMagnetometers();
   
+  // When the controller is pointing down
   if (acc.y < 0  &&  mag.y > 0) {
+    // Make the controller vibrate and flash red
     move.setLeds((int)random(255), 0, 0);
     move.setRumble(255);
   }
   else {
+    // Otherwise, make the sphere blue and stop the vibration
     move.setLeds(0, 100, 200); 
     move.setRumble(0); 
   }

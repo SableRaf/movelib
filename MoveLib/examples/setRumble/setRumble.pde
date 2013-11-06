@@ -1,30 +1,26 @@
 // Import the Move Library
 import movelib.library.*;
 
-// The MoveLib object used to initialize the library
-MoveLib ml;
-
 // The layer used to communicate with the controller(s)
-MoveManager moveManager;
+MoveLib moveManager;
 
 
 void setup() {
   
-  ml = new MoveLib(this);            // Initialize the lib
-  moveManager = new MoveManager();   // Enable move support
+  moveManager = new MoveLib(this);  // Initialize communication with the controller(s)
   
 }
 
 
 void draw() {
   
-  int level = (int)map(sin(radians(frameCount)), -1, 1, 70, 255); // All vibration levels between 1 and 70 are virtually the same
-  println("Vibration level: "+level);
+  // Make the rumble value oscillate between 64 and 255 (in my tests, vibration is off at values below 64)
+  int rumble = (int)map(sin(radians(frameCount)), -1, 1, 64, 255);
   
-  moveManager.setRumble(level);  // Set the vibration for all active controllers
+  println("Vibration level: "+rumble);
+  
+  moveManager.setRumble(rumble);  // Set the vibration for all active controllers
   moveManager.update();          // Update the vibration and LEDs for all active controllers 
-
-  println("Vibration level: "+level);
   
 }
 
