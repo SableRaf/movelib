@@ -34,7 +34,7 @@ Values from the magnetometers in the controller are dependent on the local magne
 
 ## Sphere tracking
 
-The PSeye camera does not have a MacOS driver. Here is the calibration process for the internal camera on Mac computers. Launch the sketch and put the sphere in front of the camera so that it touches the lense. The LEDs will light in white for a few seconds. Then move the controller further from the lense as it starts to blink in a solid color. Tracking should start after a few seconds.
+The PSeye camera does not have a MacOS driver. Here is the calibration process for the internal camera on Mac computers. Launch the sketch and put the sphere in front of the camera so that it touches the lense. The LEDs will light in white for a few seconds. Then move the controller further from the lense as it starts to blink in a solid color. Tracking should start after a few seconds. For more information about this workaround, have a look at the [README file of the PS Move API](https://raw.github.com/thp/psmoveapi/master/README.osx), specifically the “Background information about iSight exposure locking” part.
 
 
 ## Snapshot
@@ -72,10 +72,10 @@ For bugs in Movelib itself, please file an issue [here](https://github.com/Sable
 
 ## Known issues & limitations
 
-* The lib only works with Java 6
+* The lib is 32 bits only (so no Processing 2.1 at the moment)
 * The camera tracking sometimes fail to start properly.
-* The tracking will not work properly if you try to use more than two controllers.
-* External cameras are not supported. PS Move API only supports the built-in iSight/Facetime cameras on MacOS, so MoveLib has the same limitation. (see [this issue](https://github.com/thp/psmoveapi/issues/68) )
+* The sphere tracking will not work properly if you try to use more than two controllers (see the *Sphere tracking* section above).
+* External cameras are not supported. PS Move API only supports the built-in iSight/Facetime cameras on MacOS, so MoveLib has the same limitation (for updates about that limitation follow [this issue](https://github.com/thp/psmoveapi/issues/68) from the PS Move API repository).
 
 ## License
 
